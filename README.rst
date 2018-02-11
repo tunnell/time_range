@@ -18,7 +18,9 @@ Time range
      :target: https://pyup.io/repos/github/tunnell/time_range/
      :alt: Updates
 
-
+.. image:: https://pyup.io/repos/github/tunnell/time_range/python-3-shield.svg
+     :target: https://pyup.io/repos/github/tunnell/time_range/
+     :alt: Python 3
 
 Methods for handling time range overlaps for scheduling, taxes, and physics applications.
 
