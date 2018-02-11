@@ -1,0 +1,41 @@
+==========
+Time range
+==========
+
+
+.. image:: https://img.shields.io/pypi/v/time_range.svg
+        :target: https://pypi.python.org/pypi/time_range
+
+.. image:: https://img.shields.io/travis/tunnell/time_range.svg
+        :target: https://travis-ci.org/tunnell/time_range
+
+.. image:: https://readthedocs.org/projects/time-range/badge/?version=latest
+        :target: https://time-range.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+
+.. image:: https://pyup.io/repos/github/tunnell/time_range/shield.svg
+     :target: https://pyup.io/repos/github/tunnell/time_range/
+     :alt: Updates
+
+
+
+Methods for handling time range overlaps for scheduling, taxes, and physics applications.
+
+
+* Free software: GNU General Public License v3
+* Documentation: https://time-range.readthedocs.io.
+
+
+Features
+--------
+
+* TODO
+
+Credits
+-------
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
