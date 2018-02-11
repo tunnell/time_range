@@ -12,7 +12,9 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 requirements = [
-    # TODO: Put package requirements here
+    pandas,
+    numpy,
+    workalendar
 ]
 
 setup_requirements = [
