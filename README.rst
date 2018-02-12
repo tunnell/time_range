@@ -41,3 +41,8 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+
+
+.. image:: https://api.codacy.com/project/badge/Grade/54ccc5b06b2142baade214ad0da62ac4
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/tunnell/time_range?utm_source=github.com&utm_medium=referral&utm_content=tunnell/time_range&utm_campaign=badger
