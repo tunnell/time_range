@@ -2,9 +2,7 @@
 
 """Main module."""
 import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta, date
-
+from datetime import datetime, timedelta
 from workalendar.usa import UnitedStates
 
 def get_working_days(year, every_day=False,
@@ -13,26 +11,26 @@ def get_working_days(year, every_day=False,
     """Determine working days in a year
 
     """
-    year_start = datetime(year, 1, 1) 
+    year_start = datetime(year, 1, 1)
     year_end = datetime(year+1, 1, 1)
 
     working_days = pd.date_range(year_start, year_end,
                                  freq=resolution,
                                  closed='left')
-              
+
     df_calendar = pd.DataFrame(index=working_days)
-    
+
     working_day_key = 'working_day'
     if every_day:
         df_calendar[working_day_key] = 1
     else:
         df_calendar[working_day_key] = [holidays.is_working_day(date.date()) for date in df_calendar.index]
-    
+
     return df_calendar
 
 def my_location(trips, year):
     """Details of location throughout year
-    
+
     Must add up to a year.  Defaults to last year.
     """
     for i, trip in enumerate(trips):
@@ -42,14 +40,14 @@ def my_location(trips, year):
                 trip['stop'] = datetime(year+1, 1, 1)
             else:
                 trip['stop'] = datetime(year, *trips[i+1]['start'])
-        
+
         trip['dt'] = trip['stop'] - trip['start']
         if 'state' not in trip:
             trip['state'] = trip['country']
-        
+
     df = pd.DataFrame.from_records(trips)
     df = df.set_index(['country', 'state'])
-    
+
     # Check that it's the location for the year (possibly leap year)
     if df['dt'].sum() == 365 or df['dt'].sum() == 366:
         raise ValueError("Location must be for whole year; "
@@ -58,14 +56,14 @@ def my_location(trips, year):
     return df
 
 def my_trips(trips, default=('US', 'TX'),):
-    """Details of location throughout year                                                       
-                                                                                                 
-    Must add up to a year                                                                        
+    """Details of location throughout year
+
+    Must add up to a year
     """
     raise NotImplementedError()
 
 def time_distribution(trips, year=datetime.now().year):
-    # Get working days in year 
+    # Get working days in year
     df_wd = get_working_days(year=year)
 
     # Make DataFrame of trips
@@ -76,12 +74,12 @@ def time_distribution(trips, year=datetime.now().year):
         df_wd[str(key)] = 0
 
     # For each trip, set days to True for that location
-    for key, value in df.iterrows():  
+    for key, value in df.iterrows():
         df_wd[str(key)] += (value['start'] <= df_wd.index) & \
             (df_wd.index < value['stop']) & \
             df_wd['working_day']
-        
+
     return df_wd.sum(axis=0)
 
 
-    
+
