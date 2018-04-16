@@ -9,4 +9,4 @@ __author__ = """Christopher Tunnell"""
 __email__ = 'christopher.douglas.tunnell@gmail.com'
 __version__ = '0.1.0'
 
-from .time_range import get_working_days, my_location, time_distribution
+from .time_range import get_working_days, time_distribution, fraction_of_year
