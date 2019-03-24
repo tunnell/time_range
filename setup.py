@@ -26,7 +26,7 @@ test_requirements = [
 
 setup(
     name='time_range',
-    version='version='0.1.0'',
+    version='version='0.2.0'',
     description="Methods for handling time range overlaps for scheduling, taxes, and physics applications.",
     long_description=readme + '\n\n' + history,
     author="Christopher Tunnell",
