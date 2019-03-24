@@ -7,7 +7,7 @@ from __future__ import (absolute_import, division, print_function,
 
 __author__ = """Christopher Tunnell"""
 __email__ = 'christopher.douglas.tunnell@gmail.com'
-__version__ = '__version__ = '0.2.0''
+__version__ = '0.3.0'
 
 from .time_range import get_working_days, time_distribution
 from .time_range import fraction_of_year, time_distribution_raw
