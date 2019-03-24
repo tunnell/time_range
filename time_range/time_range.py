@@ -56,7 +56,7 @@ def my_location(trips, year):
 
     return df
 
-def time_distribution(trips, year=datetime.now().year):
+def time_distribution_raw(trips, year=datetime.now().year):
     # Get working days in year
     df_wd = get_working_days(year=year)
 
@@ -73,7 +73,33 @@ def time_distribution(trips, year=datetime.now().year):
             (df_wd.index < value['stop']) & \
             df_wd['working_day']
 
-    return df_wd.sum(axis=0)
+    return df_wd
+
+def form_2555_data(working_day_rate, country_code = 'US', **kwargs):
+    df = time_distribution_raw(**kwargs)
+    df = df[df['working_day']]
+    
+    index_selection = [x for x in df.columns if len(x) > 1 and x[0] == country_code]
+    df[country_code] = df[index_selection].sum(axis=1)
+    
+    group_key = (df[country_code] - df[country_code].shift(1)).ne(0).cumsum()
+
+    form_data = []
+    for k, v in df[country_code].groupby(group_key):
+        days = v.sum()
+        if days == 0:
+            continue
+        trip_total = (v.sum() * working_day_rate).round()
+        form_data.append((v.index[0].date(),
+                          v.index[-1].date(),
+                          v.sum(),
+                          trip_total))
+
+    return pd.DataFrame(data=form_data,
+                        columns=['Start', 'End', 'Days', 'Salary [USD]'])
+
+def time_distribution(**kwargs):
+    return time_distribution_raw(**kwargs).sum(axis=0)
 
 
 def fraction_of_year(trips,

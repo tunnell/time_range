@@ -9,4 +9,6 @@ __author__ = """Christopher Tunnell"""
 __email__ = 'christopher.douglas.tunnell@gmail.com'
 __version__ = '0.1.0'
 
-from .time_range import get_working_days, time_distribution, fraction_of_year
+from .time_range import get_working_days, time_distribution
+from .time_range import fraction_of_year, time_distribution_raw
+from .time_range import form_2555_data
